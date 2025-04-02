@@ -31,12 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'restaurant.apps.RestaurantConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +58,7 @@ ROOT_URLCONF = 'littlelemon.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,8 +79,12 @@ WSGI_APPLICATION = 'littlelemon.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'backend_capstone_littlelemon',
+        'USER': 'root',
+        'PASSWORD': 'rachmaninoff',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
@@ -121,3 +129,27 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DJANGO_REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+       'rest_framework.authentication.TokenAuthentication',
+       'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+       'rest_framework.permissions.IsAuthenticated',
+       'rest_framework.permissions.IsAdminUser',
+       'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'user': '300/minute',
+        'anon': '30/minute',
+    },
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+}
+
+DJOSER = {
+    'USER_ID_FIELD': 'id'
+}
