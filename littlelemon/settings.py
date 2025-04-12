@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4j8fzcc_hpqzd24#dp5%12i2*mxkez7&6c+osfm9cce_-zs)14
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -156,5 +156,5 @@ DJANGO_REST_FRAMEWORK = {
 }
 
 DJOSER = {
-    'USER_ID_FIELD': 'id'
+    'USER_ID_FIELD': 'username'
 }

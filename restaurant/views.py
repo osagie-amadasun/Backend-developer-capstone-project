@@ -12,7 +12,7 @@ from .models import *
 def index(request):
     return render(request, 'index.html', status=status.HTTP_200_OK)
 
-class MenuItemView(generics.ListCreateAPIView):
+class MenuItemsView(generics.ListCreateAPIView):
     '''
     Handles POST and GET method calls
     '''

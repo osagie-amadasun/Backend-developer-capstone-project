@@ -26,6 +26,11 @@ router.register(r'users', views.UserViewSet, basename='users')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('restaurant.urls')),
+    
+    path('api/auth/', include('djoser.urls')),
+    path('api/auth/', include('djoser.urls.authtoken')),
+    
     path('restaurant/menu/', include('restaurant.urls')),
     path('restaurant/booking/', include(router.urls)),
 ]
