@@ -11,5 +11,7 @@ class MenuTest(TestCase):
     def test_another_menu_item(self):
         """Another test case for the Menu model."""
         item = Menu.objects.create(Title="Salad", Price=8.5, Inventory=100)
-        self.assertEqual(str(item), "Salad : 8.5")
+        self.assertEqual(str(item), "Salad : 8.5 mn")
+        
+
 
